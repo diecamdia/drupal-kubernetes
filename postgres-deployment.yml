@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: drupal-data
   labels:
-    app: drupal-data
+    app: drupal
     tier: data
 spec:
   replicas: 1
