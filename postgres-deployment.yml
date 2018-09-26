@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drupal-data
+  labels:
+    app: drupal-data
+    tier: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drupal
+  template:
+    metadata:
+      labels:
+        app: drupal
+        tier: data
+    spec:
+      containers:
+      - name: postgres
+        image: postgres
+        env:
+          - name: POSTGRES_PASSWORD
+            value: mypassword
+        ports:
+          - containerPort: 5432
+            name: postgres

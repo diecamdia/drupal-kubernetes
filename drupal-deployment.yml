@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drupal
+  labels:
+    app: drupal
+    tier: front-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drupal
+  template:
+    metadata:
+      labels:
+        app: drupal
+        tier: front-end
+    spec:
+      containers:
+      - name: drupal
+        image: drupal
+        
+        ports:
+        - containerPort: 80
+          name: drupal
